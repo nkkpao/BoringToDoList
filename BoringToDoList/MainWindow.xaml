@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoringToDoList"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Boring to do app" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-
+        <DataGrid x:Name="dgToDoTable" Margin="10"  FontSize="20" FontFamily="Consolas" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path = Created}" IsReadOnly="True" Header="Created" Width="240"/>
+                <DataGridCheckBoxColumn Binding="{Binding Path = IsDone, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="False" Header="Status" Width="90"/>
+                <DataGridTextColumn Binding="{Binding Path = Text}" IsReadOnly="False" Header="Task" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
