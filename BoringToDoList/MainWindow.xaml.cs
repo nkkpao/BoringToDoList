@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BoringToDoList.DataModels;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +22,22 @@ namespace BoringToDoList
     /// </summary>
     public partial class MainWindow : Window
     {
+        private BindingList<ToDoModel> _toDoModels;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            _toDoModels= new BindingList<ToDoModel>()
+            { 
+                new ToDoModel(){Text="Abrakadabra"},
+                new ToDoModel(){Text="arbadakarbA"}
+            };
+
+            dgToDoTable.ItemsSource = _toDoModels;
         }
     }
 }
