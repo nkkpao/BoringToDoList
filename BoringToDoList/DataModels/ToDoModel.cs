@@ -23,12 +23,24 @@ namespace BoringToDoList.DataModels
         public bool IsDone
         {
             get { return _isDone; }
-            set { _isDone = value; }
+            set
+            {
+                if (_isDone == value)
+                    return;
+                _isDone = value;
+                OnPropertyChanged("IsDone");
+            }
         }
         public string Text
         {
             get { return _text; }
-            set { _text = value; }
+            set
+            {
+                if (_text == value)
+                    return;
+                _text = value;
+                OnPropertyChanged("Text");
+            }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
