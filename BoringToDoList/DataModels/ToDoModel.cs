@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace BoringToDoList.DataModels
 {
-    class ToDoModel
+    class ToDoModel :INotifyPropertyChanged
     {
         private bool _isDone;
         private string _text;
@@ -29,6 +31,11 @@ namespace BoringToDoList.DataModels
             set { _text = value; }
         }
 
-        
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

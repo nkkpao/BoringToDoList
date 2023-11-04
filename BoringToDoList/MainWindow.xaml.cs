@@ -38,6 +38,30 @@ namespace BoringToDoList
             };
 
             dgToDoTable.ItemsSource = _toDoModels;
+            _toDoModels.ListChanged += _toDoModels_ListChanged;
+        }
+
+        private void _toDoModels_ListChanged(object? sender, ListChangedEventArgs e)
+        {
+            switch (e.ListChangedType)
+            {
+                case ListChangedType.Reset:
+                    break;
+                case ListChangedType.ItemAdded:
+                    break;
+                case ListChangedType.ItemDeleted:
+                    break;
+                case ListChangedType.ItemMoved:
+                    break;
+                case ListChangedType.ItemChanged:
+                    break;
+                case ListChangedType.PropertyDescriptorAdded:
+                    break;
+                case ListChangedType.PropertyDescriptorDeleted:
+                    break;
+                case ListChangedType.PropertyDescriptorChanged:
+                    break;
+            }
         }
     }
 }
